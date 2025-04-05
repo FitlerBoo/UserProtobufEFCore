@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option csharp_namespace = "UserRpcClient";
+
+package user;
+
+// The greeting service definition.
+service UserService {
+  rpc AddUser (AddUserRequest) returns (AddUserResponse);
+  rpc GetUsers (GetUsersRequest) returns (GetUsersResponse);
+  rpc SubscribeToUserUpdates (SubscriptionRequest) returns (stream UserUpdateMessage);
+}
+
+// The request message containing the user's name.
+message AddUserRequest {
+	User user = 1;
+}
+
+// The response message containing the greetings.
+message AddUserResponse {
+  bool success = 1;
+}
+
+message GetUsersRequest{
+
+}
+
+message GetUsersResponse{
+	repeated User users = 1;
+}
+
+message SubscriptionRequest{
+	string user_id = 1;
+}
+
+message UserUpdateMessage{
+	string action = 1; // "CREATED", "UPDATED", "DELETED"
+	User user = 2;
+}
+
+message User {
+	string id = 1;
+	string name = 2;
+	string surname = 3;
+	string email = 4;
+	string phone = 5;
+	bytes photo = 6;
+}

@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="using:UserProtobufEFCore.ViewModels"
+		xmlns:models="using:UserProtobufEFCore.Models"
+		xmlns:dataannotations="using:System.ComponentModel.DataAnnotations"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="720"
+		MaxWidth="600" MaxHeight="720"
+        x:Class="UserProtobufEFCore.UserList"
+		x:DataType="vm:UsersVM"
+        Title="UserList">
+
+	<DockPanel Margin="20">
+		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="10">
+			<Button Content="Upload users" Command="{Binding LoadUsersCommand}"/>
+			<ProgressBar IsIndeterminate="True" Width="100"
+                        IsVisible="{Binding IsLoading}"/>
+		</StackPanel>
+
+		<TextBlock Margin="0 5" DockPanel.Dock="Top">Users:</TextBlock>
+
+		<ListBox ItemsSource="{Binding Users}">
+			<ListBox.ItemTemplate>
+				<DataTemplate DataType="models:UserModel">
+					<DockPanel>
+						<Border CornerRadius="25" Width="50" Height="50">
+							<Image Source="{Binding Photo}"/>
+						</Border>
+						<TextBlock Text="{Binding Name}" Padding="10"/>
+						<TextBlock Text="{Binding Surname}" Padding="10"/>
+						<TextBlock Text="{Binding Phone}" Padding="10"/>
+						<TextBlock Text="{Binding Email}" Padding="10"/>
+					</DockPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</DockPanel>
+	
+</Window>

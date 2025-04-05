@@ -1,16 +1,16 @@
+using System;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using UsedProtobufEFCore.ViewModels;
-using UsedProtobufEFCore.Views;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace UsedProtobufEFCore
+namespace UserProtobufEFCore
 {
-    public partial class App : Application
+    public partial class App(IServiceProvider serviceProvider) : Application
     {
+        private readonly IServiceProvider _serviceProvider = serviceProvider;
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
@@ -23,10 +23,7 @@ namespace UsedProtobufEFCore
                 // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
                 // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
                 DisableAvaloniaDataAnnotationValidation();
-                desktop.MainWindow = new MainWindow
-                {
-                    DataContext = new MainWindowViewModel(),
-                };
+                desktop.MainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             }
 
             base.OnFrameworkInitializationCompleted();

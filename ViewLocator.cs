@@ -1,9 +1,9 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using UsedProtobufEFCore.ViewModels;
+using UserProtobufEFCore.ViewModels;
 
-namespace UsedProtobufEFCore
+namespace UserProtobufEFCore
 {
     public class ViewLocator : IDataTemplate
     {

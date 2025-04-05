@@ -1,0 +1,46 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="using:UserProtobufEFCore.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="720"
+		MaxWidth="600" MaxHeight="720"
+        x:Class="UserProtobufEFCore.AddUserWindow"
+		x:DataType="vm:AddUserVM"
+        Title="AddUserWindow">
+	
+	<Border Background="#2A3447">
+		<StackPanel>
+			<TextBlock Text="ВВЕДИТЕ ИМЯ"
+					   Classes="TextBlockStyle"
+					   Margin="0,40,0,15"/>
+			<TextBox Width=" 400" Height="85" CornerRadius="10,10,10,10" Background="#2A3447" BorderBrush="WhiteSmoke"
+					 Text="{Binding Name, Mode=TwoWay}"/>
+			
+			<TextBlock Text="ВВЕДИТЕ ФАМИЛИЮ" Classes="TextBlockStyle"
+					   Margin="0,5,0,15"/>
+			<TextBox Width=" 400" Height="85" CornerRadius="10,10,10,10" Background="#2A3447" BorderBrush="WhiteSmoke"
+					 Text="{Binding Surname, Mode=TwoWay}"/>
+
+			<TextBlock Text="ВВЕДИТЕ ТЕЛЕФОН" Classes="TextBlockStyle"
+					   Margin="0,5,0,15"/>
+			<TextBox Width=" 400" Height="70" CornerRadius="10,10,10,10" Background="#2A3447" BorderBrush="WhiteSmoke"
+					 Text="{Binding Phone, Mode=TwoWay}"/>
+
+			<TextBlock Text="ВВЕДИТЕ EMAIL" Classes="TextBlockStyle"
+					   Margin="0,5,0,15"/>
+			<TextBox Width=" 400" Height="70" CornerRadius="10,10,10,10" Background="#2A3447" BorderBrush="WhiteSmoke"
+					 Text="{Binding Email, Mode=TwoWay}"/>
+
+			<Button Content="Выбрать фотографию" HorizontalAlignment="Center" Command="{Binding AddPhotoCommand}"/>
+			<Image Source="{Binding ImagePath}" Width="70" Height="70" Stretch="Uniform"/>
+			
+			
+			<Button Command="{Binding SaveToDbCommand}" HorizontalAlignment="Center" Margin="0, 10" Width="180" Height="60" Background="Red" CornerRadius="10">
+				<TextBlock Text="Отправить" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="WhiteSmoke" FontWeight="DemiBold"/>
+			</Button>
+
+		</StackPanel>
+	</Border>
+	
+</Window>

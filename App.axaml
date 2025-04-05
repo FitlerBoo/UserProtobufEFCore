@@ -1,7 +1,8 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="UsedProtobufEFCore.App"
-             xmlns:local="using:UsedProtobufEFCore"
+			 xmlns:rvThemes="clr-namespace:ReactiveValidation.Avalonia.Themes;assembly=ReactiveValidation.Avalonia"
+             x:Class="UserProtobufEFCore.App"
+             xmlns:local="using:UserProtobufEFCore"
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
@@ -13,5 +14,7 @@
   
     <Application.Styles>
         <FluentTheme />
+		<StyleInclude Source="avares://UserProtobufEFCore/Assets/Styles/TextStyle.axaml"/>
+		<StyleInclude Source="avares://UserProtobufEFCore/Assets/Styles/ButtonStyle.axaml"/>
     </Application.Styles>
 </Application>
